@@ -1,8 +1,9 @@
 console.log('hi');
 
+// Get User's choice
 const getUserChoice = userInput => {
   userInput = userInput.toLowerCase();
-  if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors'){
+  if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors' || userInput === 'bomb'){
     return userInput;
   }
   else{
@@ -10,9 +11,10 @@ const getUserChoice = userInput => {
   }
 };
 
+// Create Computer's Choice
 const getComputerChoice = () => {
-  randomNumber = Math.floor(Math.random() * 2);
-
+  randomNumber = Math.floor(Math.random() * 3);
+console.log(randomNumber);
   if (randomNumber === 0){
     return 'rock';
   }
@@ -24,7 +26,12 @@ const getComputerChoice = () => {
   }
 }
 
+// Determine the Winner
 const determineWinner = (userChoice, computerChoice) => {
+  //Cheat code
+if (userChoice === 'bomb'){
+    return 'user won!'
+}
   if (userChoice === computerChoice){
     return 'game was a tie!';
   }
@@ -55,11 +62,21 @@ if (userChoice === 'scissors'){
     return 'user won!'
   }
 }
-
 }
 
-console.log(determineWinner('paper', 'scissors'));
+// Everything's set up. Play Game.
+function playGame(){
+  const userChoice = getUserChoice('paper');
+  const computerChoice = getComputerChoice();
 
-// console.log('You pick: ' + getUserChoice('paper'))
-// console.log('Computer picks: ' + getComputerChoice());
+  // Call User
+  console.log('You got: ' + userChoice);
+
+  // Call Computer
+console.log('Computer got: ' + computerChoice);
+
+console.log(determineWinner(userChoice, computerChoice));
+}
+
+playGame()
 
